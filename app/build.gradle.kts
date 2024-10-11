@@ -33,10 +33,18 @@ android {
         create("R2Engine") {
             dimension = "processor"
             applicationIdSuffix = ".R2Engine"
-            versionNameSuffix = "-sonic"
+            versionNameSuffix = "-R2engine"
             buildConfigField("boolean", "USE_RUBBERBAND", "false")
             buildConfigField("String", "PROCESSOR_TYPE", "\"Sonic\"")
             resValue("string","app_name","R2Engine")
+        }
+        create("Sonic") {
+            dimension = "processor"
+            applicationIdSuffix = ".Sonic"
+            versionNameSuffix = "-sonicc"
+            buildConfigField("boolean", "USE_RUBBERBAND", "false")
+            buildConfigField("String", "PROCESSOR_TYPE", "\"Sonic\"")
+            resValue("string","app_name","Sonic")
         }
     }
 

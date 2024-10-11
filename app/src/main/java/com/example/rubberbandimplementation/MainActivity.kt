@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity() {
         val pitchFactor = getPitchFactor(currentPitch, currentCents)
         rubberBandProcessor.setPitch(pitchFactor)
         rubberBandProcessor.setSpeed(currentBPM)
-       //player.setPlaybackParameters(PlaybackParameters(currentBPM, pitchFactor))
+       // player.setPlaybackParameters(PlaybackParameters(currentBPM, pitchFactor))
         val dec = DecimalFormat("#,###.00")
         val bpm =dec.format(currentBPM)
         pitchTextView.text = "¸: $pitchFactor, Cents: $currentCents Speed X : $bpm"

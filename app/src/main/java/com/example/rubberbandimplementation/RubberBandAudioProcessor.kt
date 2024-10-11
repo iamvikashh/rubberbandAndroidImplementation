@@ -161,7 +161,6 @@ class RubberBandAudioProcessor : AudioProcessor {
         val isSpeedChanged = speedDifference >= CLOSE_THRESHOLD
         val isPitchChanged = pitchDifference >= CLOSE_THRESHOLD
         val isSampleRateDifferent = outputSampleRate != inputSampleRate
-
         Log.d("AudioProcessor", "Output Sample Rate: $outputSampleRate")
         Log.d("AudioProcessor", "Input Sample Rate: $inputSampleRate")
         Log.d("AudioProcessor", "Speed Difference: $speedDifference")
