@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                     enableOffload: Boolean
                 ): AudioSink {
                     return DefaultAudioSink.Builder()
-                       .setAudioProcessors(arrayOf( rubberBandProcessor,SilenceSkippingAudioProcessor()))
+                       .setAudioProcessors(arrayOf( SilenceSkippingAudioProcessor(),rubberBandProcessor))
                         .setEnableAudioTrackPlaybackParams(false)
                         .setEnableFloatOutput(enableFloatOutput)
                         .build()

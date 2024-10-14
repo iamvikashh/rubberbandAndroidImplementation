@@ -77,6 +77,7 @@ public class RubberBandStretcher {
     public native void setMaxProcessSize(int samples);
 
     public native int getSamplesRequired();
+    public native int getStartDelay();
 
 
     public native void study(float[][] input, int offset, int n, boolean finalBlock);

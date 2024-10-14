@@ -179,3 +179,12 @@ extern "C" JNIEXPORT void JNICALL
 Java_com_example_rubberbandimplementation_RubberBandStretcher_initialise(JNIEnv *env, jobject obj, jint sampleRate, jint channels, jint options, jdouble initialTimeRatio, jdouble initialPitchScale) {
     setStretcher(env, obj, new RubberBandStretcher(sampleRate, channels,options , initialTimeRatio, initialPitchScale));
 }
+
+extern "C"
+JNIEXPORT jint JNICALL
+Java_com_example_rubberbandimplementation_RubberBandStretcher_getStartDelay(JNIEnv *env,
+                                                                            jobject obj) {
+
+    return getStretcher(env, obj)->getStartDelay();
+
+}

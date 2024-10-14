@@ -198,6 +198,10 @@ class RubberBandAudioProcessor : AudioProcessor {
 
         val rb = rb
         val channelCount = inputAudioFormat.channelCount
+        val startDelay = rb?.startDelay
+        val samplesRequired = rb?.samplesRequired
+        Log.e("RubberBandStretcher", "getOutput: startDelay: $startDelay")
+    //    Log.e("RubberBandStretcher", "getOutput: samples required: $samplesRequired")
         if (rb != null) {
             val outputSize = rb.available()
             if (outputSize > 0) {
@@ -223,9 +227,11 @@ class RubberBandAudioProcessor : AudioProcessor {
     override fun isEnded(): Boolean {
         Log.e("inputeEnded", inputEnded.toString())
         Log.e("rb", rb.toString())
-        Log.e("rb sample required", rb?.available().toString())
+        val samplesRequired= rb?.samplesRequired
 
-        return inputEnded && (rb == null || rb!!.available() == -1 || rb!!.available() == 0)
+        Log.e("rb sample required", samplesRequired.toString())
+
+        return inputEnded && (rb == null || samplesRequired == 0)
     }
 
     override fun flush() {
@@ -241,7 +247,7 @@ class RubberBandAudioProcessor : AudioProcessor {
                 rb = RubberBandStretcher(
                     inputAudioFormat.sampleRate,
                     inputAudioFormat.channelCount,
-                    RubberBandStretcher.OptionEngineFiner.or(RubberBandStretcher.OptionProcessRealTime).or(RubberBandStretcher.OptionPitchHighQuality),
+                    RubberBandStretcher.OptionProcessRealTime.or(RubberBandStretcher.OptionEngineFiner).or(RubberBandStretcher.OptionWindowShort).or(RubberBandStretcher.OptionFormantPreserved).or(RubberBandStretcher.OptionPitchHighConsistency),
                     speed.toDouble(),
                     pitch.toDouble()
                 )
